@@ -12,7 +12,7 @@
         
              <a class="navbar-brand"   href="#">Digital Media Footprint</a>
              <a class="nav-link" href="#">Clients</a>
-             <a class="nav-link" href="#">Services Provided</a>
+             <a class="nav-link" href="#">Services Providing</a>
             </nav>
 
             @yield('content')

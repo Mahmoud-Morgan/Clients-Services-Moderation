@@ -7,17 +7,19 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
     <body>
-        <div class="container">
-            <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-        
-             <a class="navbar-brand"   href="#">Digital Media Footprint</a>
-             <a class="nav-link" href="#">Clients</a>
-             <a class="nav-link" href="#">Services Providing</a>
+        <div class="container-fluid"> 
+          
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+                <a class="navbar-brand" href="#">Digital Media Footprint</a>
+                <div class="navbar-nav" style="width:80%; border: 5px solid red;align=right;">
+                    <a class="nav-item nav-link" style="align=right;" href="#">Clients</a>
+                    <a class="nav-item nav-link" href="#">Services Providing</a>
+                </div>
             </nav>
 
             @yield('content')
 
-            <div class="" style="text-align: center;background-color: #e3f2fd;">
+            <div class="fixed-bottom" style="text-align: center; background-color: #e3f2fd;">
               &copy; DS 2020
             </div>
         </div>

@@ -9,6 +9,7 @@
     @method('PATCH')
         <div class="form-group mb-2">
         <input type="text"  style="width:300px;" value="{{$service->service_name}}" name="service_name" class="form-control"  placeholder="edit Service">
+        <span class="text-danger">{{ $errors->first('service_name') }}</span>
             <button type="submit" class="btn btn-success" aria-pressed="true">Submit edit</button>
         </div>
     </form>

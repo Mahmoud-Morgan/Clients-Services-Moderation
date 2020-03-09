@@ -6,7 +6,7 @@
 
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>
-    <body>
+    <body style="padding-bottom: 70px;">
         <div class="container-fluid"> 
           
             <nav class="navbar navbar-expand-lg navbar-light bg-light" >
@@ -19,9 +19,9 @@
 
             @yield('content')
 
-            <div class="fixed-bottom" style="text-align: center; background-color: #e3f2fd;">
+            <footer class="footer fixed-bottom container" style="text-align: center; background-color: #e3f2fd; position: absolute; bottom:0;width: 98%;">
               &copy; DS 2020
-            </div>
+            </footer>
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>

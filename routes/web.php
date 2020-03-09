@@ -14,8 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/create',function () {
-    return view('services_provieding/create');
-    });
+Route::get('/create', function () {
+    return view('clients.create');
+});
 
  Route::resource('/servicename','ServicesNamesController');   
+ Route::resource('/client','ClientController'); 

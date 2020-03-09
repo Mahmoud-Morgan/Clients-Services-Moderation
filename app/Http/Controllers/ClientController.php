@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ServiceName;
+use App\Client;
 
-class ServicesNamesController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,6 @@ class ServicesNamesController extends Controller
     public function index()
     {
         //
-        $service['services']= ServiceName::all()->sortBy('service_name');
-        return view('services_provieding.list',$service);
     }
 
     /**
@@ -27,7 +25,6 @@ class ServicesNamesController extends Controller
     public function create()
     {
         //
-        return view('services_provieding.create');
     }
 
     /**
@@ -39,12 +36,26 @@ class ServicesNamesController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([ 'service_name' => 'required' ]);
-        $service=new ServiceName();
-        $service->service_name = $request->service_name;
-        $service->save();
+        $request->validate([ 'description' => 'required',
+        'status' => 'required',
+        'titel' => 'required',
 
-        return redirect('servicename');
+        'contact_phone' => 'required',
+        'start_contract_date' => 'required',
+        'end_contract_date' => 'required'
+        ]);
+
+        $client=new Client();
+        $client->titel = $request->titel;
+        $client->description = $request->description;
+        $client->status = $request->status;
+        $client->contact_phone = $request->contact_phone;
+        $client->start_contract_date = $request->start_contract_date;
+        $client->end_contract_date = $request->end_contract_date;
+
+        $client->save();
+
+        return redirect('client');
     }
 
     /**
@@ -67,10 +78,6 @@ class ServicesNamesController extends Controller
     public function edit($id)
     {
         //
-        $where = array('id' => $id);
-        $data['service'] = ServiceName::where($where)->first();
- 
-        return view('services_provieding.edit', $data);
     }
 
     /**
@@ -83,10 +90,6 @@ class ServicesNamesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $request->validate([ 'service_name' => 'required' ]);
-        $update = ['service_name' => $request->service_name];
-        ServiceName::where('id',$id)->update($update);
-        return redirect('servicename');
     }
 
     /**
@@ -98,8 +101,5 @@ class ServicesNamesController extends Controller
     public function destroy($id)
     {
         //
-        ServiceName::where('id',$id)->delete();
-   
-        return redirect('servicename');
     }
 }

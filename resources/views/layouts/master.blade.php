@@ -11,9 +11,9 @@
           
             <nav class="navbar navbar-expand-lg navbar-light bg-light" >
                 <a class="navbar-brand" href="#">Digital Media Footprint</a>
-                <div class="navbar-nav" style="width:80%; border: 5px solid red;align=right;">
+                <div class="navbar-nav" style="width:80%; align=right;">
                     <a class="nav-item nav-link" style="align=right;" href="#">Clients</a>
-                    <a class="nav-item nav-link" href="#">Services Providing</a>
+                    <a class="nav-item nav-link" href="{{ route('servicename.index') }}">Services Providing</a>
                 </div>
             </nav>
 

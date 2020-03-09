@@ -18,4 +18,4 @@ Route::get('/create',function () {
     return view('services_provieding/create');
     });
 
- Route::resource('/serviceName','ServicesNamesController');   
+ Route::resource('/servicename','ServicesNamesController');   

@@ -15,8 +15,8 @@ class ServicesNamesController extends Controller
     public function index()
     {
         //
-        $servise= ServiceName::orderBy('service_name');
-        return view('services_provieding.list',$servise);
+        $service['services']= ServiceName::all()->sortBy('service_name');
+        return view('services_provieding.list',$service);
     }
 
     /**
@@ -39,6 +39,11 @@ class ServicesNamesController extends Controller
     public function store(Request $request)
     {
         //
+        $service=new ServiceName();
+        $service->service_name = $request->service_name;
+        $service->save();
+
+        return redirect('servicename');
     }
 
     /**
@@ -61,6 +66,10 @@ class ServicesNamesController extends Controller
     public function edit($id)
     {
         //
+        $where = array('id' => $id);
+        $data['service'] = ServiceName::where($where)->first();
+ 
+        return view('services_provieding.edit', $data);
     }
 
     /**
@@ -73,6 +82,10 @@ class ServicesNamesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([ 'service_name' => 'required' ]);
+        $update = ['service_name' => $request->service_name];
+        ServiceName::where('id',$id)->update($update);
+        return redirect('servicename');
     }
 
     /**
@@ -84,5 +97,8 @@ class ServicesNamesController extends Controller
     public function destroy($id)
     {
         //
+        ServiceName::where('id',$id)->delete();
+   
+        return redirect('servicename');
     }
 }

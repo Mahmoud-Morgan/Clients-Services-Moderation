@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceName extends Model
+class Client extends Model
 {
     //
     public function clientService()
     {
-        return $this->hasMany('App\ClientService','service_name_id');
+        return $this->hasMany('App\ClientService','client_id');
     }
 }

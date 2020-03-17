@@ -3,6 +3,7 @@
 @section('content')
 
   <br><br><br>
+  <h3>Services Providing</h3>
    <div class="row">
         <div class="col-12">
           
@@ -10,7 +11,7 @@
            <thead>
               <tr>
                  <th>Services</th>
-                 <th colspan="2">Actions</th>
+                 <th colspan="2"><center>Actions</center></th>
               </tr>
            </thead>
            <tbody>

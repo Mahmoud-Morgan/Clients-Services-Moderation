@@ -15,6 +15,8 @@ class ClientController extends Controller
     public function index()
     {
         //
+        $client['clients']= Client::all()->sortBy('titel');
+        return view ('clients.list',$client);
     }
 
     /**
@@ -25,6 +27,7 @@ class ClientController extends Controller
     public function create()
     {
         //
+        return view('clients.create');
     }
 
     /**
@@ -36,10 +39,9 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([ 'description' => 'required',
+        $request->validate([ 'titel' => 'required',
+        'description' => 'required',
         'status' => 'required',
-        'titel' => 'required',
-
         'contact_phone' => 'required',
         'start_contract_date' => 'required',
         'end_contract_date' => 'required'
@@ -67,6 +69,10 @@ class ClientController extends Controller
     public function show($id)
     {
         //
+        $where = array('id' => $id);
+        $data['client'] = Client::where($where)->first();
+ 
+        return view('clients.details', $data);
     }
 
     /**
@@ -78,6 +84,10 @@ class ClientController extends Controller
     public function edit($id)
     {
         //
+        $where = array('id' => $id);
+        $data['client'] = Client::where($where)->first();
+ 
+        return view('clients.edit', $data);
     }
 
     /**
@@ -90,6 +100,23 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([ 'titel' => 'required',
+        'description' => 'required',
+        'status' => 'required',
+        'contact_phone' => 'required',
+        'start_contract_date' => 'required',
+        'end_contract_date' => 'required'
+        ]);
+
+        $update = ['titel' => $request->titel,
+        'description' => $request->description,
+        'status' => $request->status,
+        'contact_phone' => $request->contact_phone,
+        'start_contract_date' => $request->start_contract_date,
+        'end_contract_date' => $request->end_contract_date,
+         ];
+        Client::where('id',$id)->update($update);
+        return redirect('client');
     }
 
     /**
@@ -101,5 +128,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
+        Client::where('id',$id)->delete();
+        return redirect('client');
     }
 }

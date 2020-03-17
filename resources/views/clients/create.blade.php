@@ -6,7 +6,7 @@
 <h2 style="margin-top: 12px;" class="text-center">Add New Client</h2>
 <br>
  
-<form action="{{ route('client.store') }}" method="POST" name="add_product">
+<form action="{{ route('client.store') }}" method="POST" name="add_client">
 {{ csrf_field() }}
  
 <div class="row">
@@ -43,7 +43,9 @@
             <strong>End Contract Date</strong>
             <input type="Date" name="end_contract_date" class="form-control" placeholder="Enter End Contract Date">
             <span class="text-danger">{{ $errors->first('end_contract_date') }}</span>
-        </div>         
+        </div>   
+    </div>    
+
     <div class="col-md-12">
         <div class="form-group">
             <strong>Description</strong>
@@ -51,8 +53,9 @@
             <span class="text-danger">{{ $errors->first('description') }}</span>
         </div>
     </div>
+
     <div class="col-md-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success mb-2">Submit</button>
     </div>
 </div>
  

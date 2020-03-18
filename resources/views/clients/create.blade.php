@@ -64,9 +64,24 @@
         </div>
 
         <div class="{{$service->id}}"  style="display: none;">
-                    <div class="form-group">
+            <input type="hidden"  name="service[{{$service->id}}][id]" value="{{$service->id}}">
+
+        <div class="form-group">
+            <strong>Type</strong>
+            <input type="text" class="form-control" name="service[{{$service->id}}][type]" placeholder="Enter Type">
+            <span class="text-danger">{{ $errors->first('type') }}</span>
+        </div>
+
+
+        <div class="form-group">
+            <strong>Link</strong>
+            <input type="text" class="form-control" name="service[{{$service->id}}][link]" placeholder="Enter Link">
+            <span class="text-danger">{{ $errors->first('link') }}</span>
+        </div>
+
+        <div class="form-group">
             <strong>Description</strong>
-            <textarea class="form-control" col="4" name="description" placeholder="Enter Description"></textarea>
+            <textarea class="form-control" col="4" name="service[{{$service->id}}][description]" placeholder="Enter Description"></textarea>
             <span class="text-danger">{{ $errors->first('description') }}</span>
         </div>
 

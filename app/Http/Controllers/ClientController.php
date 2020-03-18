@@ -43,26 +43,45 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([ 'titel' => 'required',
-        'description'                => 'required',
-        'status'                     => 'required',
-        'contact_phone'              => 'required',
-        'start_contract_date'        => 'required',
-        'end_contract_date'          => 'required'
-        ]);
 
 
 
+      
 
-        $client                      =new Client();
-        $client->titel               = $request->titel;
-        $client->description         = $request->description;
-        $client->status              = $request->status;
-        $client->contact_phone       = $request->contact_phone;
-        $client->start_contract_date = $request->start_contract_date;
-        $client->end_contract_date   = $request->end_contract_date;
 
-        $client->save();
+        
+
+        // $request->validate([ 'titel' => 'required',
+        // 'description'                => 'required',
+        // 'status'                     => 'required',
+        // 'contact_phone'              => 'required',
+        // 'start_contract_date'        => 'required',
+        // 'end_contract_date'          => 'required'
+        // ]);
+
+        // foreach ($request->service as $service) {
+
+        //    //$client_service->service_id= print_var_name($service);
+        //    $client_service->service_id->type= $service['type'];
+        //    $client_service->service_id->link= $service['link'];
+        //    $client_service->service_id->description= $service['description'];
+
+
+        // }
+
+        dd($request);
+
+
+        // $client                      =new Client();
+        // $client->titel               = $request->titel;
+        // $client->description         = $request->description;
+        // $client->status              = $request->status;
+        // $client->contact_phone       = $request->contact_phone;
+        // $client->start_contract_date = $request->start_contract_date;
+        // $client->end_contract_date   = $request->end_contract_date;
+
+        //$client->save();
+        //$client_id= $client->id;
 
         return redirect('client');
     }
@@ -138,4 +157,13 @@ class ClientController extends Controller
         Client::where('id',$id)->delete();
         return redirect('client');
     }
+
+    private function print_var_name($var) {
+        foreach($GLOBALS as $var_name => $value) {
+           if ($value === $var) {
+                return $var_name;
+                }
+            }
+            return false;
+        }
 }

@@ -60,9 +60,11 @@
 	            <span class="text-danger">{{ $errors->first('description') }}</span>
 	        </div>
 	    </div>
-
-            <button type="submit" class="btn btn-primary" aria-pressed="true">Submit edit</button>
+	    	
         </div>
+      <a href="{{ route('client.index')}}" style="margin-right:100px;" class="btn btn-primary"> Cancel edit</a></td>
+
+      <button type="submit"  class="btn btn-success" aria-pressed="true">Submit edit</button>
     </div>
     </form>
 

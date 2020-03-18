@@ -53,7 +53,28 @@
             <span class="text-danger">{{ $errors->first('description') }}</span>
         </div>
     </div>
+    <div class="col-md-12">
+    <strong>Services</strong>
+    <br><br>
+    @foreach($services as $service)
+    
+        <div class="form-group">
+          <input type="checkbox" class="checkbox" name="service_name"  value="{{$service->id}}" >
+          <label > {{$service->service_name}}</label><br>
+        </div>
 
+        <div class="service"  style="display: none;">
+                    <div class="form-group">
+            <strong>Description</strong>
+            <textarea class="form-control" col="4" name="description" placeholder="Enter Description"></textarea>
+            <span class="text-danger">{{ $errors->first('description') }}</span>
+        </div>
+
+        </div>
+
+
+     @endforeach
+     </div>
     <div class="col-md-12">
         <button type="submit" class="btn btn-success mb-2">Submit</button>
     </div>
@@ -63,3 +84,11 @@
 <br><br><br>
 </div>
 @endsection
+
+<script >
+window.onload= function() {
+  $('input[type="checkbox"]').click(function(){
+        $(".service").toggle();
+    });
+};
+</script>

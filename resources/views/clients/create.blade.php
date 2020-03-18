@@ -55,7 +55,8 @@
     </div>
     <div class="col-md-12">
     <strong>Services</strong>
-    <br><br>
+    <br> <p>at least one service must be assigned</p>
+    
     @foreach($services as $service)
     
         <div class="form-group">
@@ -104,7 +105,6 @@
 window.onload= function() {
   $(".checkbox").click(function(){
      var id = jQuery(this).attr("id")
-
          $("."+id).toggle();
     });
 };

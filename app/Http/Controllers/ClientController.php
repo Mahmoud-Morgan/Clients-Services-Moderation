@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Client;
 use App\ServiceName;
 use APP\ClientService;
@@ -43,45 +44,68 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([ 'titel' => 'required',
+        'description'                => 'required',
+        'status'                     => 'required',
+        'contact_phone'              => 'required',
+        'start_contract_date'        => 'required',
+        'end_contract_date'          => 'required'
+        ]);
 
 
 
-      
 
 
-        
-
-        // $request->validate([ 'titel' => 'required',
-        // 'description'                => 'required',
-        // 'status'                     => 'required',
-        // 'contact_phone'              => 'required',
-        // 'start_contract_date'        => 'required',
-        // 'end_contract_date'          => 'required'
-        // ]);
-
-        // foreach ($request->service as $service) {
-
-        //    //$client_service->service_id= print_var_name($service);
-        //    $client_service->service_id->type= $service['type'];
-        //    $client_service->service_id->link= $service['link'];
-        //    $client_service->service_id->description= $service['description'];
+        $exist_service= false;
 
 
-        // }
+        DB::beginTransaction();
+        try{
 
-        dd($request);
+            $client                      =new Client();
+            $client->titel               = $request->titel;
+            $client->description         = $request->description;
+            $client->status              = $request->status;
+            $client->contact_phone       = $request->contact_phone;
+            $client->start_contract_date = $request->start_contract_date;
+            $client->end_contract_date   = $request->end_contract_date;
+
+            $client->save();
+            $client_id= $client->id;
 
 
-        // $client                      =new Client();
-        // $client->titel               = $request->titel;
-        // $client->description         = $request->description;
-        // $client->status              = $request->status;
-        // $client->contact_phone       = $request->contact_phone;
-        // $client->start_contract_date = $request->start_contract_date;
-        // $client->end_contract_date   = $request->end_contract_date;
+            foreach ($request->service as $service) {
+               
+               if (isset($service['type']) && isset($service['link']) && isset($service['description'])) {
+                 
+                $client_service                  = new ClientService();
+                $client_service->service_name_id = $service['id'];
+                $client_service->client_id       = $client_id;
+                $client_service->type            = $service['type'];
+                $client_service->link            = $service['link'];
+                $client_service->description     = $service['description'];
+                 dd($service);
+                $client_service->save();
+                $exist_service= true;
+               }
+            }
 
-        //$client->save();
-        //$client_id= $client->id;
+            
+            if($exist_service==true){
+                DB::commit();
+            }else{
+                DB::rollback();
+            }
+                
+        } catch (\Exception $e) {
+                // Rollback Transaction
+                DB::rollback();
+             }
+
+
+
+
+
 
         return redirect('client');
     }
@@ -95,7 +119,7 @@ class ClientController extends Controller
     public function show($id)
     {
         //
-        $where = array('id' => $id);
+        $where          = array('id' => $id);
         $data['client'] = Client::where($where)->first();
  
         return view('clients.details', $data);
@@ -110,7 +134,7 @@ class ClientController extends Controller
     public function edit($id)
     {
         //
-        $where = array('id' => $id);
+        $where          = array('id' => $id);
         $data['client'] = Client::where($where)->first();
  
         return view('clients.edit', $data);

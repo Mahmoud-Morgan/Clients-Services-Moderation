@@ -59,11 +59,11 @@
     @foreach($services as $service)
     
         <div class="form-group">
-          <input type="checkbox" class="checkbox" name="service_name"  value="{{$service->id}}" >
+          <input type="checkbox" class="checkbox" id="{{$service->id}}" >
           <label > {{$service->service_name}}</label><br>
         </div>
 
-        <div class="service"  style="display: none;">
+        <div class="{{$service->id}}"  style="display: none;">
                     <div class="form-group">
             <strong>Description</strong>
             <textarea class="form-control" col="4" name="description" placeholder="Enter Description"></textarea>
@@ -87,8 +87,10 @@
 
 <script >
 window.onload= function() {
-  $('input[type="checkbox"]').click(function(){
-        $(".service").toggle();
+  $(".checkbox").click(function(){
+     var id = jQuery(this).attr("id")
+
+         $("."+id).toggle();
     });
 };
 </script>

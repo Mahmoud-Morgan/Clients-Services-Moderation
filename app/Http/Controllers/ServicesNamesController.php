@@ -97,9 +97,9 @@ class ServicesNamesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //can't delete used service
         ServiceName::where('id',$id)->delete();
-   
         return redirect('servicename');
+
     }
 }

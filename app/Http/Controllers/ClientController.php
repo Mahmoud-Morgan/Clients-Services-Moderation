@@ -171,7 +171,10 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
+        ClientService::where('client_id',$id)->delete();
         Client::where('id',$id)->delete();
+
+
         return redirect('client');
     }
 

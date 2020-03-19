@@ -24,5 +24,6 @@ Route::get('/create', function () {
 
  Route::get('/clientservises2/edit/{id1}/{id2}','ClientServiceController@edit')->name('clientservises2.edit');
  Route::PATCH('/clientservises2/update/{id1}/{id2}','ClientServiceController@update')->name('clientservises2.update');
- Route::get('/clientservises2/create/{id1}','ClientServiceController@create')->name('clientservises2.create');
+  Route::get('/clientservises2/create/{id}/','ClientServiceController@create')->name('clientservises2.create');
+ Route::DELETE('/clientservises2/delete/{id1}/{id2}','ClientServiceController@destroy')->name('clientservises2.destroy');
  

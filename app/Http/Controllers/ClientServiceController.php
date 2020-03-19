@@ -126,8 +126,11 @@ class ClientServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id1,$id2)
     {
         //
+         $where  = array('client_id' => $id1,'service_name_id'=>$id2);
+        ClientService::where($where)->delete();
+        return redirect()->action('ClientServiceController@show',$id1);
     }
 }

@@ -34,7 +34,7 @@
          <td style="width:150px" ><a href="{{ route('clientservises2.edit',[$client->id,$service->id])}}" class="btn btn-primary"> Edit Service</a></td>
       
          <td style="width:100px"><center>
-         <form action="#" method="post">
+         <form action="{{route('clientservises2.destroy',[$client->id,$service->id])}}" method="post">
           {{ csrf_field() }}
           @method('DELETE')
           <button class="btn btn-danger" type="submit">Delete</button>

@@ -19,9 +19,9 @@ class ClientController extends Controller
     public function index()
     {
         //
-        $client['clients']= Client::all()->sortBy('titel');
+        $data['clients']= Client::all()->sortBy('titel');
         
-        return view ('clients.list',$client);
+        return view ('clients.list',$data);
     }
 
     /**
@@ -32,8 +32,8 @@ class ClientController extends Controller
     public function create()
     {
         //
-        $service['services']=ServiceName::all()->sortBy('service_name');
-        return view('clients.create',$service);
+        $data['services']=ServiceName::all()->sortBy('service_name');
+        return view('clients.create',$data);
     }
 
     /**
@@ -54,9 +54,9 @@ class ClientController extends Controller
         ]);
 
 
-        $exist_service= false;
+        $exist_service= false;// to check if any service assigned or not
 
-
+        //start transaction
         DB::beginTransaction();
         try{
 
@@ -83,7 +83,7 @@ class ClientController extends Controller
                 $client_service->link            = $service['link'];
                 $client_service->description     = $service['description'];
                 $client_service->save();
-                $exist_service= true;
+                $exist_service= true;// to check if any service assigned or not
                }
             }
 
@@ -175,12 +175,5 @@ class ClientController extends Controller
         return redirect('client');
     }
 
-    private function print_var_name($var) {
-        foreach($GLOBALS as $var_name => $value) {
-           if ($value === $var) {
-                return $var_name;
-                }
-            }
-            return false;
-        }
+
 }

@@ -47,5 +47,6 @@
   </div>
 <br>
 @endforeach
-<a href="{{ route('client.show',$client->id)}}" class="btn btn-primary">Back to Client Info </a>
+<a  style="margin-right: 50px;" href="{{ route('client.show',$client->id)}}" class="btn btn-primary">Back to Client Info </a>
+<a href="{{ route('clientservises2.create',$client->id)}}" class="btn btn-success">Add new Client Service </a>
 @stop

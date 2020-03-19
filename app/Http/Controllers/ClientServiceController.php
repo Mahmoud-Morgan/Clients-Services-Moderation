@@ -25,9 +25,12 @@ class ClientServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
+        $data['client']=Client::where('id',$id)->first();
+        $data['services']=ServiceName::all()->sortBy('service_name');
+        return view('client_services.create',$data);
     }
 
     /**
@@ -39,6 +42,22 @@ class ClientServiceController extends Controller
     public function store(Request $request)
     {
         //
+         $request->validate([ 'type' => 'required',
+         'link'                      => 'required',
+         'description'               => 'required',
+         'service_name_id'           => 'required',
+         'client_id'                 => 'required',
+         ]);
+
+        $client_service                  = new ClientService();
+        $client_service->service_name_id = $request->service_name_id;
+        $client_service->client_id       = $request->client_id;
+        $client_service->type            = $request->type;
+        $client_service->link            = $request->link;
+        $client_service->description     = $request->description;
+        $client_service->save();
+
+        return redirect()->action('ClientServiceController@show',$client_service->client_id);
     }
 
     /**
@@ -51,11 +70,11 @@ class ClientServiceController extends Controller
     {
         //
         $where                   = array('id' => $id);
-        $data['client']       = Client::where($where)->first();
+        $data['client']          = Client::where($where)->first();
         
         $where                   = array('client_id' => $id);
         $data['client_services'] = ClientService::where($where)->join('service_names','service_name_id','=','id')
-        ->get();
+        ->get()->sortBy('service_name');
         
         return view('client_services.list',$data);
     }
@@ -69,7 +88,9 @@ class ClientServiceController extends Controller
     {
         $where                  = array('client_id' => $id1,'service_name_id'=>$id2);
         $data['client_service'] = ClientService::where($where)->first();
- 
+
+        $where                  = array('id'=>$id2);
+        $data['service_name']   =ServiceName::where($where)->first();
         return view('client_services.edit', $data);
     }
 
@@ -80,9 +101,23 @@ class ClientServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id1,$id2)
     {
         //
+         $request->validate([ 'type' => 'required',
+         'link'                      => 'required',
+         'description'               => 'required',
+         ]);
+         
+         $update                     = ['type' => $request->type,
+         'link'                      => $request->link,
+         'description'               => $request->description,
+         ];
+
+        $where  = array('client_id' => $id1,'service_name_id'=>$id2);
+        ClientService::where($where)->update($update);
+    
+         return redirect()->action('ClientServiceController@show',$id1);
     }
 
     /**

@@ -13,7 +13,7 @@
               <tr>
                  <th>Titel</th>
                  <th>Status</th>                 
-                 <th colspan="4"><center>Actions</center></th>
+                 <th colspan="3"><center>Actions</center></th>
               </tr>
            </thead>
            <tbody>
@@ -23,7 +23,6 @@
                  <td>{{ $client->status }}</td>
                  <td><center><a href="{{ route('client.show',$client->id)}}" class="btn btn-primary">Info Details</a></center></td>
                  <td><center><a href="{{ route('clientservises.show',$client->id)}}" class="btn btn-primary">Services</a></center></td>
-                 <td><center><a href="{{ route('client.edit',$client->id)}}" class="btn btn-primary">Edit</a></center></td>
                  <td><center>
                  <form action="{{ route('client.destroy', $client->id)}}" method="post">
                   {{ csrf_field() }}

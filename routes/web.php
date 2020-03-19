@@ -20,6 +20,9 @@ Route::get('/create', function () {
 
  Route::resource('/servicename','ServicesNamesController');   
  Route::resource('/client','ClientController'); 
- Route::get('/clientservises2/edit/{id1}/{id2}','ClientServiceController@edit')->name('clientservises2.edit');
- Route::put('/clientservises2/update/{id1}/{id2}','ClientServiceController@update')->name('clientservises2.update');
  Route::resource('/clientservises','ClientServiceController'); 
+
+ Route::get('/clientservises2/edit/{id1}/{id2}','ClientServiceController@edit')->name('clientservises2.edit');
+ Route::PATCH('/clientservises2/update/{id1}/{id2}','ClientServiceController@update')->name('clientservises2.update');
+ Route::get('/clientservises2/create/{id1}','ClientServiceController@create')->name('clientservises2.create');
+ 

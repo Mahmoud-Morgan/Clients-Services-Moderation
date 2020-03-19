@@ -3,7 +3,8 @@
 @section('content')
 
 	<div class="containar" style="margin: 50px;" >
-    <h3>Edit Client Data</h3>
+    <h3>Edit Client Service</h3>
+    <h4>{{$service_name->service_name}}</h4>
     <form action="{{ route('clientservises2.update',[$client_service->client_id,$client_service->service_name_id]) }}" method="POST">
     {{ csrf_field() }}
     @method('PATCH')
@@ -25,7 +26,7 @@
             <textarea class="form-control" col="4"  name="description" placeholder="Enter Description">{{$client_service->description}}</textarea>
             <span class="text-danger">{{ $errors->first('description') }}</span>
         </div>
-         <a href="{{ route('client.index')}}" style="margin-right:100px;" class="btn btn-primary"> Cancel edit</a></td>
+         <a href="{{ route('clientservises.show',$client_service->client_id)}}" style="margin-right:100px;" class="btn btn-primary"> Cancel edit</a></td>
 
       <button type="submit"  class="btn btn-success" aria-pressed="true">Submit edit</button>
     </form>

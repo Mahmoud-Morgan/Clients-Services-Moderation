@@ -62,7 +62,7 @@
 	    </div>
 	    	
         </div>
-      <a href="{{ route('client.index')}}" style="margin-right:100px;" class="btn btn-primary"> Cancel edit</a></td>
+      <a href="{{ route('client.show',$client->id)}}" style="margin-right:100px;" class="btn btn-primary"> Cancel edit</a></td>
 
       <button type="submit"  class="btn btn-success" aria-pressed="true">Submit edit</button>
     </div>

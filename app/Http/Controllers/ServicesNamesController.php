@@ -40,7 +40,7 @@ class ServicesNamesController extends Controller
     {
         //
         $request->validate([ 'service_name' => 'required' ]);
-        $service=new ServiceName();
+        $service  =new ServiceName();
         $service->service_name = $request->service_name;
         $service->save();
 

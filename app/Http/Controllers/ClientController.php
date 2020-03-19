@@ -50,7 +50,7 @@ class ClientController extends Controller
         'status'                     => 'required',
         'contact_phone'              => 'required',
         'start_contract_date'        => 'required',
-        'end_contract_date'          => 'required'
+        'end_contract_date'          => 'required|date|after:start_contract_date'
         ]);
 
 
@@ -148,7 +148,7 @@ class ClientController extends Controller
          'status'                     => 'required',
          'contact_phone'              => 'required',
          'start_contract_date'        => 'required',
-         'end_contract_date'          => 'required'
+         'end_contract_date'          => 'required|date|after:start_contract_date'
          ]);
          
          $update               = ['titel' => $request->titel,

@@ -10,7 +10,7 @@
         <div class="container-fluid"> 
           
             <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-                <a class="navbar-brand" href="#">Digital Media Footprint</a>
+                <a class="navbar-brand" href="{{ route('client.index')}}">Digital Media Footprint</a>
                 <div class="navbar-nav" style="width:80%; align=right;">
                     <a class="nav-item nav-link" style="align=right;" href="{{ route('client.index') }}">Clients</a>
                     <a class="nav-item nav-link" href="{{ route('servicename.index') }}">Services Providing</a>

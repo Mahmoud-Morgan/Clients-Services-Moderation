@@ -53,6 +53,7 @@
             <span class="text-danger">{{ $errors->first('description') }}</span>
         </div>
     </div>
+
     <div class="col-md-12">
     <strong>Services</strong>
     <br> <p>at least one service must be assigned</p>
@@ -87,10 +88,10 @@
         </div>
 
         </div>
+    @endforeach
+    </div>
 
 
-     @endforeach
-     </div>
     <div class="col-md-12">
         <button type="submit" class="btn btn-success mb-2">Submit</button>
     </div>

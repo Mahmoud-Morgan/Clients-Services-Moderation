@@ -28,8 +28,8 @@ class ClientServiceController extends Controller
     public function create($id)
     {
         //
-        $data['client']=Client::where('id',$id)->first();
-        $data['services']=ServiceName::all()->sortBy('service_name');
+        $data['client']   =Client::where('id',$id)->first();
+        $data['services'] =ServiceName::all()->sortBy('service_name');
         return view('client_services.create',$data);
     }
 

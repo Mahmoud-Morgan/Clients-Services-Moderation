@@ -1,9 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-
+<br>
 <h1>Client Services</h1>
 <h3> <strong>Client Titel :</strong>{{$client->titel}}</h3>
+<br>
 @foreach($client_services as $service)
 	 <div class="jumbotron">
     <h4>{{$service->service_name}}</h4>

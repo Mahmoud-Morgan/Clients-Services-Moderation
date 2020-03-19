@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Client;
+use App\ClientService;
 use App\ServiceName;
-use APP\ClientService;
+
 
 class ClientController extends Controller
 {
@@ -53,9 +54,6 @@ class ClientController extends Controller
         ]);
 
 
-
-
-
         $exist_service= false;
 
 
@@ -84,7 +82,6 @@ class ClientController extends Controller
                 $client_service->type            = $service['type'];
                 $client_service->link            = $service['link'];
                 $client_service->description     = $service['description'];
-                 dd($service);
                 $client_service->save();
                 $exist_service= true;
                }
@@ -101,10 +98,6 @@ class ClientController extends Controller
                 // Rollback Transaction
                 DB::rollback();
              }
-
-
-
-
 
 
         return redirect('client');

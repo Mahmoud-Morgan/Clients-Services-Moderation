@@ -4,7 +4,7 @@
 
   <br><br><br>
   <div class="jumbotron">
-    <h2>Client Details</h2>
+    <h2>Client Information</h2>
     <br>
    <div class="row">
 
@@ -40,7 +40,7 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <p><strong>Description</strong>{{$client->description}}</p> 
+        <p><strong>Description :</strong>{{$client->description}}</p> 
       </div>
     </div>
 
@@ -49,8 +49,8 @@
       
     <table>  
       <tr>
-         <td style="width:100px" ><a href="{{ route('client.show',$client->id)}}" class="btn btn-primary"> Services</a></td>
-         <td style="width:100px"><center><a href="{{ route('client.edit',$client->id)}}" class="btn btn-primary">Edit</a></center></td>
+         <td style="width:100px" ><a href="{{ route('clientservises.show',$client->id)}}" class="btn btn-primary"> Services</a></td>
+         <td style="width:100px"><center><a href="{{ route('client.edit',$client->id)}}" class="btn btn-primary">Edit Info</a></center></td>
          <td style="width:100px"><center>
          <form action="{{ route('client.destroy', $client->id)}}" method="post">
           {{ csrf_field() }}

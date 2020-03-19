@@ -21,8 +21,8 @@
               <tr>
                  <td>{{ $client->titel }}</td>
                  <td>{{ $client->status }}</td>
-                 <td><center><a href="{{ route('client.show',$client->id)}}" class="btn btn-primary"> Details</a></center></td>
-                 <td><center><a href="{{ route('client.show',$client->id)}}" class="btn btn-primary"> Services</a></center></td>
+                 <td><center><a href="{{ route('client.show',$client->id)}}" class="btn btn-primary">Info Details</a></center></td>
+                 <td><center><a href="{{ route('clientservises.show',$client->id)}}" class="btn btn-primary">Services</a></center></td>
                  <td><center><a href="{{ route('client.edit',$client->id)}}" class="btn btn-primary">Edit</a></center></td>
                  <td><center>
                  <form action="{{ route('client.destroy', $client->id)}}" method="post">

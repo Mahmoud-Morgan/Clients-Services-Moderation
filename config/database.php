@@ -45,12 +45,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'url' => env('DATABASE_URL','mysql://b5633ad12d51e4:f81b5e32@eu-cdbr-west-02.cleardb.net/heroku_051316e3d8ccaf1?reconnect=true'),
+            'host' => env('DB_HOST', 'eu-cdbr-west-02.cleardb.net'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'heroku_051316e3d8ccaf1'),
+            'username' => env('DB_USERNAME', 'b5633ad12d51e4'),
+            'password' => env('DB_PASSWORD', 'f81b5e32'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

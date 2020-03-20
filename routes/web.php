@@ -22,3 +22,6 @@ Route::get('/','ClientController@index');
   Route::get('/clientservises2/create/{id}/','ClientServiceController@create')->name('clientservises2.create');
  Route::DELETE('/clientservises2/delete/{id1}/{id2}','ClientServiceController@destroy')->name('clientservises2.destroy');
  
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

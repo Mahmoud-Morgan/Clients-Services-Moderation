@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/','ClientController@index');
+//Route::get('/','ClientController@index');
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/', 'HomeController@index');
 
  Route::resource('/servicename','ServicesNamesController');   
  Route::resource('/client','ClientController'); 
@@ -21,7 +23,9 @@ Route::get('/','ClientController@index');
  Route::PATCH('/clientservises2/update/{id1}/{id2}','ClientServiceController@update')->name('clientservises2.update');
   Route::get('/clientservises2/create/{id}/','ClientServiceController@create')->name('clientservises2.create');
  Route::DELETE('/clientservises2/delete/{id1}/{id2}','ClientServiceController@destroy')->name('clientservises2.destroy');
- 
-Auth::routes();
+// });
 
-Route::get('/home', 'HomeController@index')->name('home');
+ 
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');

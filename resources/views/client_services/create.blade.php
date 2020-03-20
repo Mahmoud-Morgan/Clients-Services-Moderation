@@ -38,7 +38,7 @@
             <textarea class="form-control" col="4"  name="description" placeholder="Enter Description"></textarea>
             <span class="text-danger">{{ $errors->first('description') }}</span>
         </div>
-         
+         <a href="{{ route('clientservises.show',$client->id)}}" style="margin-right:100px;" class="btn btn-primary"> Cancel Adding</a></td>
       <button type="submit"  class="btn btn-success" aria-pressed="true">Add Service</button>
     </form>
     </div>

@@ -14,7 +14,7 @@
 //Route::get('/','ClientController@index');
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/', 'HomeController@index');
-
+Route::get('/','ClientController@index'); 
  Route::resource('/servicename','ServicesNamesController');   
  Route::resource('/client','ClientController'); 
  Route::resource('/clientservises','ClientServiceController'); 

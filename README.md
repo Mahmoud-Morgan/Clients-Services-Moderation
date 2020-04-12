@@ -16,7 +16,7 @@ link: http://laravel-ds-task.herokuapp.com/
         
 4-checkboxes for the services each client is subscribed in (Facebook , Youtube , Twitter ,
 
- Instagram etc.). When the client is added the admin can check the services the client is subscribed to. 
+  Instagram etc.). When the client is added the admin can check the services the client is subscribed to. 
  
  
 5-Services Module:

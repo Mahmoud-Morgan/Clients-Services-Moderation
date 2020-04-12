@@ -12,7 +12,7 @@ link: http://laravel-ds-task.herokuapp.com/
 
 ●Clients Module to add, edit and delete clients from the database. The client’s data is
 
-   - Title - Description - Status - Contact Phone - Contract Start Date - Contract End Date).
+   -- Title - Description - Status - Contact Phone - Contract Start Date - Contract End Date).
         
 ●checkboxes for the services each client is subscribed in (Facebook , Youtube , Twitter ,
 

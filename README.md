@@ -22,9 +22,7 @@ link: http://laravel-ds-task.herokuapp.com/
  
  
 -Services Module:
-
     ● Beside Every row in the clients datatable there is button to redirect the admin to manage the
-    
       services which the client is subscribed to.
       
     ● Services Module to add - edit and delete services data for each user.
